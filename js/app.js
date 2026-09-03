@@ -152,14 +152,12 @@
     $$('[data-download]').forEach(b => b.addEventListener('click', () => modal.classList.add('open')));
     $('#modalClose').addEventListener('click', () => modal.classList.remove('open'));
     modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
-    $$('.store-btn').forEach(a => a.addEventListener('click', e => {
-      e.preventDefault();
-      const store = a.dataset.store;
-      const url = store === 'ios'
-        ? 'https://apps.apple.com/app/nexus'
-        : 'https://play.google.com/store/apps/details?id=com.nexus.app';
-      window.open(url, '_blank', 'noopener');
-    }));
+    /* تنزيل مباشر من ملفات الموقع: app/android.apk و app/iphone.ipa */
+    $$('.store-btn').forEach(a => {
+      a.addEventListener('click', () => {
+        modal.classList.remove('open');
+      });
+    });
   }
 
   /* =========================================================
